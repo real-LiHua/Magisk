@@ -143,11 +143,6 @@ fun Project.setupCoreLib() {
             }
             from(zipTree(downloadFile(BUSYBOX_DOWNLOAD_URL, BUSYBOX_ZIP_CHECKSUM)))
             include(abiList.map { "$it/libbusybox.so" })
-            onlyIf {
-                if (inputs.sourceFiles.files.size != abiList.size * 6)
-                    throw StopExecutionException("Please build binaries first! (./build.py binary)")
-                true
-            }
         }
 
         tasks.getByPath("merge${variantCapped}JniLibFolders").dependsOn(syncLibs)
