@@ -14,6 +14,7 @@ default = ["check-signature", "check-client", "su-check-db"]
 check-signature = []
 check-client = []
 su-check-db = []
+selinux = []
 
 [lints]
 workspace = true
