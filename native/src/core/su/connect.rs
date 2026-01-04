@@ -180,6 +180,8 @@ impl SuAppContext<'_> {
             attr.st.st_mode = 0o600;
             attr.st.st_uid = self.info.mgr_uid.as_();
             attr.st.st_gid = self.info.mgr_uid.as_();
+        
+            #[cfg(feature = "selinux")]
             attr.con.push_str(MAGISK_FILE_CON);
 
             fifo.mkfifo(0o600)?;
